@@ -1,12 +1,9 @@
 #!/bin/bash
 
-# Deleting old BD's container
+# Deleting old containers and volume
 docker rm -f nextCloudDB &> /dev/null;
 docker volume rm -f nCloud  &> /dev/null;
-
-
-# Creating space where be storing BD's data
-docker volume create nCloud;
+docker rm -f nextcloud &> /dev/null; 
 
 # Creating space where be storing BD's data
 docker volume create nCloud;
@@ -68,7 +65,6 @@ while true; do
         fi;
 done;
 
-docker rm -f nextcloud;
 docker run -d --name nextcloud --link nextCloudDB:db -e NEXT_CLOUD_USER_NAME=$NEXT_CLOUD_USER_NAME -e NEXT_CLOUD_USER_PASSWORD=$NEXT_CLOUD_USER_PASSWORD -p 4242:80 nextcloud;
 
 echo "Your NextCloud is availeble by next address:"
