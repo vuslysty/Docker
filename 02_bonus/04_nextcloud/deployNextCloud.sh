@@ -36,7 +36,7 @@ done;
 docker run -d --restart=on-failure:10 --name nextCloudDB -v nCloud:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD mysql:5.7;
 
 # Buiding of NextCloud server
-docker build . -t nextcloud --no-cache
+docker build . -t nextcloud
 
 # Creating user for next cloud
 echo -n "Create user's name for NextCloud account: ";
